@@ -21,7 +21,7 @@ const covid19ImpactEstimator = (data) => {
   // Estimator Function
   function calcEstimate() {
     const days = getDays();
-    this.infectionsByRequestedTime = this.currentlyInfected * (2 ** Math.trunc(days / 3)) * 10;
+    this.infectionsByRequestedTime = this.currentlyInfected * (2 ** Math.trunc(days / 3));
     this.severeCasesByRequestedTime = Math.trunc(0.15 * this.infectionsByRequestedTime);
     const availableBeds = (0.35 * totalHospitalBeds);
     this.hospitalBedsByRequestedTime = Math.trunc(availableBeds - this.severeCasesByRequestedTime);
@@ -41,8 +41,10 @@ const covid19ImpactEstimator = (data) => {
 
   const output = {
     data,
-    impact,
-    severeImpact
+    estimate: {
+      impact,
+      severeImpact
+    }
   };
   return output;
 };
