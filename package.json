@@ -4,12 +4,11 @@
   "repository": "git@github.com:BuildforSDG-Cohort1-Assessment/covid-19-estimator-js.git",
   "license": "MIT",
   "private": false,
-  "type": "module",
   "scripts": {
     "lint": "eslint ./src/",
     "build": "npx babel index.js -o main.bundle.js",
     "dev": "nodemon --exec npx babel-node index.js",
-    "start": "npm run build && node main.bundle.js"
+    "start": "npx babel-node index.js"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
