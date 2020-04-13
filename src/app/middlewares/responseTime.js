@@ -12,7 +12,7 @@ function logResponseTime(fileLocation) {
       const { method, path: endpointPath } = req;
       const { statusCode } = res;
 
-      fs.appendFileSync(fileLocation, `${method}\t\t${endpointPath}\t\t\t${statusCode}\t\t${elapsedTimeInMs}\tms\n`);
+      fs.appendFileSync(fileLocation, `${method}\t\t${endpointPath}\t\t${statusCode}\t\t${elapsedTimeInMs}ms\n`);
     });
 
     next();
