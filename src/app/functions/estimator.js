@@ -33,8 +33,8 @@ const covid19ImpactEstimator = (data) => {
     this.dollarsInFlight = Math.trunc(this.infectionsByRequestedTime * avgCostWithPopulation);
   }
   // ----- Object properties -------
-  impact.currentlyInfected = Math.trunc(Number(reportedCases) * 10);
-  severeImpact.currentlyInfected = Math.trunc(Number(reportedCases) * 50);
+  impact.currentlyInfected = Math.trunc(Number(reportedCases) * 100);
+  severeImpact.currentlyInfected = Math.trunc(Number(reportedCases) * 500);
   // Infections By Request Time Property
   calcEstimate.call(impact);
   calcEstimate.call(severeImpact);
