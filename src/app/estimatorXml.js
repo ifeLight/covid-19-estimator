@@ -1,9 +1,8 @@
-import xml2js from 'xml2js';
-import covid19Estimator from '../estimator';
-import covidInputValidator from './validators/covidInput';
+const xml2js = require('xml2js');
+const covid19Estimator = require('./functions/estimator');
+const covidInputValidator = require('./validators/covidInput');
 
-
-export default function (req, res) {
+module.exports = function estimatorXml(req, res) {
   const { body } = req;
   const validation = covidInputValidator(body);
   if (validation.error) {
@@ -13,4 +12,4 @@ export default function (req, res) {
   const builder = new xml2js.Builder();
   const xml = builder.buildObject(result);
   return res.status(200).send(xml);
-}
+};

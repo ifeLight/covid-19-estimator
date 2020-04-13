@@ -1,7 +1,7 @@
-import fs from 'fs';
+const fs = require('fs');
 
 // response-time-logger.js
-export default function logResponseTime(fileLocation) {
+function logResponseTime(fileLocation) {
   return function logresponsetimFunc(req, res, next) {
     const startHrTime = process.hrtime();
     // const fileLocation = path.join(__dirname, 'log.txt');

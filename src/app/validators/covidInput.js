@@ -1,6 +1,6 @@
-import Joi from 'joi';
+const Joi = require('joi');
 
-export default function (data) {
+module.exports = function covidInput(data) {
   const schema = Joi.object().keys({
     region: Joi.object().keys({
       name: Joi.string().alphanum().required(),
@@ -17,4 +17,4 @@ export default function (data) {
 
   const result = Joi.validate(data, schema);
   return result;
-}
+};

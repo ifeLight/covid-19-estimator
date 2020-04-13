@@ -1,7 +1,7 @@
-import covid19Estimator from '../estimator';
-import covidInputValidator from './validators/covidInput';
+const covid19Estimator = require('./functions/estimator');
+const covidInputValidator = require('./validators/covidInput');
 
-export default function (req, res) {
+module.exports = function estimatorJson(req, res) {
   const { body } = req;
   const validation = covidInputValidator(body);
   if (validation.error) {
@@ -9,4 +9,4 @@ export default function (req, res) {
   }
   const result = covid19Estimator(body);
   return res.status(200).json(result);
-}
+};

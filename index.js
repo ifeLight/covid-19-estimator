@@ -1,16 +1,16 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import 'source-map-support/register';
-import express from 'express';
-import bodyParser from 'body-parser';
-import path from 'path';
+// import 'source-map-support/register';
+const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
 
 // Express Controllers
-import estimator from './src/app/estimator';
-import estimatorXml from './src/app/estimatorXml';
-import logsEndpoint from './src/app/logs';
+const estimator = require('./src/app/estimator');
+const estimatorXml = require('./src/app/estimatorXml');
+const logsEndpoint = require('./src/app/logs');
 
 // Express Middlewares
-import responseTime from './src/app/middlewares/responseTime';
+const responseTime = require('./src/app/middlewares/responseTime');
 
 // Initiating Main Express app
 const app = express();

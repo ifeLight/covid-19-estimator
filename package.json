@@ -8,7 +8,7 @@
     "lint": "eslint ./src/",
     "build": "npx babel index.js -o main.bundle.js",
     "dev": "nodemon --exec npx babel-node index.js",
-    "start": "npx babel-node index.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "body-parser": "^1.19.0",

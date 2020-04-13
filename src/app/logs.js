@@ -1,8 +1,8 @@
-import fs from 'fs';
+const fs = require('fs');
 
-export default function (filename) {
+module.exports = function logger(filename) {
   return function log(req, res) {
     const file = fs.readFileSync(filename);
     res.status(200).send(file);
   };
-}
+};
