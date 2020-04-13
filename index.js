@@ -24,10 +24,10 @@ app.use(bodyParser.json());
 const logFile = path.join(__dirname, 'logs.txt');
 
 // Delete log File at startup
-const logFileExist = fs.existsSync(logFile);
-if (logFileExist) {
-  fs.unlinkSync(logFile);
-}
+// const logFileExist = fs.existsSync(logFile);
+// if (logFileExist) {
+//  fs.unlinkSync(logFile);
+// }
 
 // Middlewares
 app.use(responseTime(logFile));
