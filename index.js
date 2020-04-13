@@ -3,6 +3,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const fs = require('fs');
 
 // Express Controllers
 const estimator = require('./src/app/estimator');
@@ -19,7 +20,15 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+// Log File
 const logFile = path.join(__dirname, 'logs.txt');
+
+// Delete log File at startup
+const logFileExist = fs.existsSync(logFile);
+if (logFileExist) {
+  fs.unlinkSync(logFile);
+}
+
 // Middlewares
 app.use(responseTime(logFile));
 

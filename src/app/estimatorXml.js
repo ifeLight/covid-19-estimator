@@ -11,5 +11,6 @@ module.exports = function estimatorXml(req, res) {
   const result = covid19Estimator(body);
   const builder = new xml2js.Builder();
   const xml = builder.buildObject(result);
+  res.type('application/xml');
   return res.status(200).send(xml);
 };
