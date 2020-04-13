@@ -1,8 +1,7 @@
-
 const covid19ImpactEstimator = (data) => {
   // Destructuring input
   const {
-    region, periodType, timeToElapse, reportedCases, population, totalHospitalBeds
+    region, periodType, timeToElapse, reportedCases, totalHospitalBeds
   } = data;
   // Output Properties
   const impact = {};
@@ -29,20 +28,21 @@ const covid19ImpactEstimator = (data) => {
     this.casesForVentilatorsByRequestedTime = Math.trunc(0.02 * this.infectionsByRequestedTime);
     const { avgDailyIncomeInUSD, avgDailyIncomePopulation } = region;
     const avgCost = Number(avgDailyIncomeInUSD) * Number(avgDailyIncomePopulation);
-    const avgCostWithPopulation = avgCost * Number(population);
-    this.dollarsInFlight = Math.trunc(this.infectionsByRequestedTime * avgCostWithPopulation);
+    this.dollarsInFlight = Math.trunc((this.infectionsByRequestedTime * avgCost) / days);
   }
   // ----- Object properties -------
-  impact.currentlyInfected = Math.trunc(Number(reportedCases) * 1);
-  severeImpact.currentlyInfected = impact.currentlyInfected * 50;
+  impact.currentlyInfected = Math.trunc(Number(reportedCases) * 10);
+  severeImpact.currentlyInfected = Math.trunc(Number(reportedCases) * 50);
   // Infections By Request Time Property
   calcEstimate.call(impact);
   calcEstimate.call(severeImpact);
 
   const output = {
     data,
-    impact,
-    severeImpact
+    estimate: {
+      impact,
+      severeImpact
+    }
   };
   return output;
 };
